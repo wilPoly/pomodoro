@@ -2,6 +2,7 @@ $(document).ready(function(){
 var seconds = 1500;
 var display;
 var count;
+var play = false;
 $("#timer").text(timer(seconds));
 
 function timer(seconds) {
@@ -32,6 +33,23 @@ function counter() {
 	count = setInterval(decrement, 1000);
 }
 
-	$("#play").click('button', counter);
+// function playPause() {
+
+	$("#play").click('button', function(){
+		if (play === false){
+			counter();
+			play = true;
+			$("#play").text('Pause');
+		}
+		else {
+			clearInterval(count);
+			play = false;
+			$("#play").text('Play');
+		}
+
+	});
+// }
+
+	
 	
 });
