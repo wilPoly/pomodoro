@@ -8,10 +8,13 @@ var workMode = true;
 var play = false;
 var sound = new Audio("./media/salt_machine.mp3")
 $("#timer").text(timer(seconds));
+$('#sessionMode').text("Work");
 
 function timer(seconds) {
+	var hours = Math.floor(seconds / 3600);
+	seconds = seconds % 3600;
 	var minutes = Math.floor(seconds / 60);
-	seconds = Math.floor(seconds % 60);
+	seconds = seconds % 60;
 
 	if (seconds < 10) {
 		seconds = "0" + seconds;
@@ -19,8 +22,11 @@ function timer(seconds) {
 	if (minutes < 10) {
 		minutes = "0" + minutes;
 	}
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
 	
-	display = minutes + ":" + seconds;
+	display = hours + ":" + minutes + ":" + seconds;
 	
 	return display;
 }
@@ -30,12 +36,14 @@ function decrement() {
 		//clearInterval(count);
 		sound.play();
 			if (workMode === true) {
-				seconds = workTime;
-				workMode = false;
-			}
-			else {
 				seconds = breakTime;
+				workMode = false;
+				$('#sessionMode').text("Break");
+			}
+			else if (workMode === false) {
+				seconds = workTime;
 				workMode = true;
+				$('#sessionMode').text("Work");
 			}
 		$("#timer").text(timer(seconds));
 	}		
@@ -66,6 +74,7 @@ function reset () {
 	clearInterval(count);
 	seconds = workTime;
 	$("#timer").text(timer(seconds));
+	$('#sessionMode').text("Work");
 	play = false;
 	$("#play").text('Play');
 }
