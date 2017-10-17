@@ -26,21 +26,19 @@ function timer(seconds) {
 		hours = "0" + hours;
 	}
 	
-	display = hours + ":" + minutes + ":" + seconds;
+	return display = hours + ":" + minutes + ":" + seconds;
 	
-	return display;
 }
 
 function decrement() {
 	if (seconds === 0) {
-		//clearInterval(count);
 		sound.play();
 			if (workMode === true) {
 				seconds = breakTime;
 				workMode = false;
 				$('#sessionMode').text("Break");
 			}
-			else if (workMode === false) {
+			else {
 				seconds = workTime;
 				workMode = true;
 				$('#sessionMode').text("Work");

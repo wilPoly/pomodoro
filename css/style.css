@@ -17,15 +17,6 @@ body {
     /*height: 150px;*/
 }
 
-#session, #breakTime { 
-    width: 40%;
-    height: 150px;
-    background-color: rgb(79, 168, 130);
-    margin: 4% 4.8% 4% 4.8%;
-    position: relative;
-    display: inline-block;
-}
-
 #breakTime {
     
 }
