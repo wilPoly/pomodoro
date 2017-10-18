@@ -6,11 +6,23 @@
 <script type="text/javascript" src="script/script.js"></script>
 <html>
     <body>
-    	<div id="workTime"></div>
-    	<div id="breakTime"></div>
-        <div id="timer"></div>
-        <div id="sessionMode"></div>
-        <button id="play">Play</button>
-        <button id="reset">Reset</button>
+        <h2 id="timer"></h2>
+        <h3 id="sessionMode"></h3>
+        <div id="controls">
+	        <button id="play">Play</button>
+	        <button id="stop">Stop</button>
+	        <button id="reset">Reset</button>
+	    </div>
+	    <div id="timeSet">
+	    	<h4>Set time</h4>
+	        	<p id="work">Session : <span id="workTime"></span>
+	        		<button class="plus">+</button>
+	        		<button class="minus">-</button>
+	        	</p>
+	        	<p id="break">Break : <span id="breakTime"></span>
+	        	<button class="plus">+</button>
+	        		<button class="minus">-</button>
+	        	</p>
+    	</div>
     </body>
 </html>
