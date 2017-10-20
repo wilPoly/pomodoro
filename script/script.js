@@ -1,8 +1,7 @@
 $(document).ready(function(){
-var workTime = 1500;
+var workTime = 10;
 var seconds = workTime;
-var breakTime = 300;
-var display;
+var breakTime = 5;
 var count;
 var workMode = true;
 var play = false;
@@ -28,7 +27,7 @@ function timer(seconds) {
 		hours = "0" + hours;
 	}
 	
-	return display = hours + ":" + minutes + ":" + seconds;
+	return (hours > 0) ? hours + ':' + minutes + ":" + seconds : minutes + ":" + seconds;
 	
 }
 
@@ -70,55 +69,68 @@ function playPause() {
 		}
 }
 
-function reset () {
+function stop () {
 	clearInterval(count);
+	play = false;
+	workMode = true;
 	seconds = workTime;
+	$("#play").text('Play');
 	$("#timer").text(timer(seconds));
 	$('#sessionMode').text("Work");
+}
+
+function reset () {
+	clearInterval(count);
+	seconds = workTime = 1500;
+	breakTime = 300;
+	workMode = true;
 	play = false;
+	$("#timer").text(timer(seconds));
+	$("#workTime").text(timer(seconds));
+	$("#breakTime").text(timer(breakTime));
+	$('#sessionMode').text("Work");
 	$("#play").text('Play');
 }
 
-
-// Controls
-$("#play").click('button', playPause);
-$("#reset").click('button', reset);
-
-//Increase Work Time
-$('#work').find('.plus').click('button', function(){
+function incWorkTime () {
 	if (play === false) { 
 		workTime = workTime + 60;
 		seconds = workTime;
 		$('#workTime').text(timer(seconds));
 		$('#timer').text(timer(seconds));
 	}
-});
-//Reduce Work Time
-$('#work').find('.minus').click('button', function(){
+}
+
+function decWorkTime () {
 	if (play === false && workTime > 60) { 
 		workTime = workTime - 60;
 		seconds = workTime;
 		$('#workTime').text(timer(seconds));
 		$('#timer').text(timer(seconds));
 	}
-});
+}
 
-//Increase Break Time
-$('#break').find('.plus').click('button', function(){
+function incBreakTime () {
 	if (play === false) { 
 		breakTime = breakTime + 60;
 		$('#breakTime').text(timer(breakTime));
 	}
-});
+}
 
-//Reduce Break Time
-$('#break').find('.minus').click('button', function(){
+function decBreakTime () {
 	if (play === false && breakTime > 60) { 
 		breakTime = breakTime - 60;
 		$('#breakTime').text(timer(breakTime));
 	}
-});
+}
 
-
+// Controls
+$("#play").click('button', playPause);
+$('#stop').click('button', stop);
+$("#reset").click('button', reset);
+$('#work').find('.plus').click('button', incWorkTime);
+$('#work').find('.minus').click('button', decWorkTime);
+$('#break').find('.plus').click('button', incBreakTime);
+$('#break').find('.minus').click('button', decBreakTime);
 	
 });
