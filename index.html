@@ -1,28 +1,42 @@
 <!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="script/script.js"></script>
-<html>
+<title>WilPoly's Pomodoro</title>
+</head>
 	<body>
-		<h2 id="timer"></h2>
-		<h3 id="sessionMode"></h3>
-		<div id="controls">
-			<button id="play">Play</button>
-			<button id="stop">Stop</button>
-			<button id="reset">Reset</button>
-		</div>
-		<div id="timeSet">
-			<h4>Set time</h4>
-				<p id="work">Session : <span id="workTime"></span>
-					<button class="minus">-</button>
-					<button class="plus">+</button>
-				</p>
-				<p id="break">Break : <span id="breakTime"></span>
-					<button class="minus">-</button>
-					<button class="plus">+</button>
-				</p>
+		<div id="wrapper">
+			<h1>Pomodoro</h1>
+			<div id="main">
+				<h3 id="sessionMode"></h3>
+				<h2 id="timer"></h2>
+				<div id="controls">
+					<!-- <button id="reset">Reset</button> -->
+					<button id="play">Play</button>
+					<button id="stop">Stop</button>
+				</div>
+			</div>
+			<div id="timeSet">
+				<h4>Time Settings</h4>
+					<div id="work" class="timeSet">Session - <span id="workTime"></span>
+						<div class="timeSetControls">
+							<button class="minus">-</button>
+							<button class="plus">+</button>
+						</div>
+					</div>
+					<div id="break" class="timeSet">Break - <span id="breakTime"></span>
+						<div class="timeSetControls">
+							<button class="minus">-</button>
+							<button class="plus">+</button>
+						</div>
+					</div>
+					<div id="reset">
+						<a href="#" id="reset">Reset</a>
+					</div>
+			</div>
 		</div>
 	</body>
 </html>

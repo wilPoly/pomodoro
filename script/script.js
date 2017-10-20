@@ -1,13 +1,13 @@
 $(document).ready(function(){
-var workTime = 10;
+var workTime = 1500;
 var seconds = workTime;
-var breakTime = 5;
+var breakTime = 300;
 var count;
 var workMode = true;
 var play = false;
 var sound = new Audio("./media/salt_machine.mp3")
 $("#timer").text(timer(seconds));
-$('#sessionMode').text("Work");
+$('#sessionMode').text("Session");
 $('#workTime').text(timer(workTime));
 $('#breakTime').text(timer(breakTime));
 
@@ -42,7 +42,7 @@ function decrement() {
 			else {
 				seconds = workTime;
 				workMode = true;
-				$('#sessionMode').text("Work");
+				$('#sessionMode').text("Session");
 			}
 		$("#timer").text(timer(seconds));
 	}		
@@ -76,7 +76,7 @@ function stop () {
 	seconds = workTime;
 	$("#play").text('Play');
 	$("#timer").text(timer(seconds));
-	$('#sessionMode').text("Work");
+	$('#sessionMode').text("Session");
 }
 
 function reset () {
@@ -88,7 +88,7 @@ function reset () {
 	$("#timer").text(timer(seconds));
 	$("#workTime").text(timer(seconds));
 	$("#breakTime").text(timer(breakTime));
-	$('#sessionMode').text("Work");
+	$('#sessionMode').text("Session");
 	$("#play").text('Play');
 }
 
@@ -127,7 +127,8 @@ function decBreakTime () {
 // Controls
 $("#play").click('button', playPause);
 $('#stop').click('button', stop);
-$("#reset").click('button', reset);
+// $("#reset").click('button', reset);
+$('#reset').click(reset);
 $('#work').find('.plus').click('button', incWorkTime);
 $('#work').find('.minus').click('button', decWorkTime);
 $('#break').find('.plus').click('button', incBreakTime);
