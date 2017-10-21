@@ -127,7 +127,6 @@ function decBreakTime () {
 // Controls
 $("#play").click('button', playPause);
 $('#stop').click('button', stop);
-// $("#reset").click('button', reset);
 $('#reset').click(reset);
 $('#work').find('.plus').click('button', incWorkTime);
 $('#work').find('.minus').click('button', decWorkTime);
